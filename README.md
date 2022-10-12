@@ -1,6 +1,5 @@
-# project-logs README
+# project-controller README
 
-This is the README for your extension "project-logs-2". After writing up a brief description, we recommend including the following sections.
 
 ## What is it for?
 
