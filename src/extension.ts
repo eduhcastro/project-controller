@@ -6,14 +6,14 @@ import UtilsController from './controllers/UtilsController';
 var Loaded = false;
 
 /**
- * ProjectLogs
+ * ProjectController
  * 
  * @description An extension for Visual Studio. Have full control of your 
  * projects, editing/creating new files.
  * @author Eduardo Castro <Skillerm>
  * @version 1.0.0
  */
-var ProjectLogs;
+var ProjectController;
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -28,17 +28,17 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/**
 	 * NameLogs
-	 * @description Get name of the folder logs, is project-logs-date
+	 * @description Get name of the folder logs, is project-controller-date
 	 * @return string
 	 */
 	const NameLogs = UtilsController.GenerateLogName(Folder);
 
 
-	ProjectLogs = vscode.commands.registerCommand('project-logs.init', () => {
+	ProjectController = vscode.commands.registerCommand('project-controller.init', () => {
 
 		// Doesn't let the project start more than once
 		if (Loaded) {
-			vscode.window.showInformationMessage('Project Logs already initialized!');
+			vscode.window.showInformationMessage('Project Controller already initialized!');
 			return;
 		}
 
@@ -69,32 +69,32 @@ export function activate(context: vscode.ExtensionContext) {
 			path = path.replace(/\\/g, "/");
 
 			// Check if file is in folder logs
-			if (path.indexOf('project-logs') == -1 && !FileController.FindStrInTextFile(NameLogs + '/init-' + UtilsController.GetDate() + '.txt', path)) {
+			if (path.indexOf('project-controller') == -1 && !FileController.FindStrInTextFile(NameLogs + '/init-' + UtilsController.GetDate() + '.txt', path)) {
 				FileController.CreateNew(path, NameLogs, Folder) // --> Or copy :p
-				vscode.window.showInformationMessage('New file added in project-logs');
+				vscode.window.showInformationMessage('New file added in project-controller');
 			}
 		})
 
 			.on('change', function (path) {
 				path = path.replace(/\\/g, "/");
-				if (path.indexOf('project-logs') == -1) { // --> Ignore files edited in folders contain project-logs
+				if (path.indexOf('project-controller') == -1) { // --> Ignore files edited in folders contain project-logs
 					FileController.CreateNew(path, NameLogs, Folder) // --> Or copy :p
-					vscode.window.showInformationMessage('File changed in project-logs');
+					vscode.window.showInformationMessage('File changed in project-controller');
 				}
 			})
 		//.on('unlink', function (path) { console.log('File', path, 'has been removed'); })
 		//.on('error', function (error) { console.error('Error happened', error); })
 
 
-		vscode.window.showInformationMessage('Project Logs Loaded!');
+		vscode.window.showInformationMessage('Project Controller Loaded!');
 	})
-	
-	context.subscriptions.push(ProjectLogs);
+
+	context.subscriptions.push(ProjectController);
 
 }
 
 // This method is called when your extension is deactivated
 export function deactivate() {
-	vscode.window.showInformationMessage('Project Logs Unloaded!');
+	vscode.window.showInformationMessage('Project Controller Unloaded!');
 }
 

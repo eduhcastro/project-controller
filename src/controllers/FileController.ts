@@ -30,7 +30,7 @@ const FileController = {
       var writeStream = fs.createWriteStream(generatelogname + '/init-' + dateandhours + '.txt');
 
       for (var i = 0; i < files.length; i++) {
-        if (i != 0 && files[i].indexOf('project-logs') == -1) writeStream.write(files[i] + '\n');
+        if (i != 0 && files[i].indexOf('project-controller') == -1) writeStream.write(files[i] + '\n');
       }
 
       writeStream.end();

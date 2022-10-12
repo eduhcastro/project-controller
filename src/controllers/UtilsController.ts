@@ -6,7 +6,7 @@ const UtilsController = {
   },
 
   GenerateLogName: (folder: string) => {
-    return folder + '/project-logs-' + UtilsController.GetDate();
+    return folder + '/project-controller-' + UtilsController.GetDate();
   },
 
 }

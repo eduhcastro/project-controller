@@ -1,23 +1,28 @@
 {
-  "name": "project-logs",
-  "displayName": "project-logs",
+  "name": "project-controller",
+  "displayName": "project-controller",
   "description": "",
   "version": "1.0.0",
+  "publisher": "skillerm",
   "engines": {
     "vscode": "^1.72.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skillerm/project-controller"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:project-logs.init"
+    "onCommand:project-controller.init"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "project-logs.init",
-        "title": "Run Project Logs"
+        "command": "project-controller.init",
+        "title": "Run Project Controller"
       }
     ]
   },
