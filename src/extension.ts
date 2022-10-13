@@ -11,7 +11,7 @@ var Loaded = false;
  * @description An extension for Visual Studio. Have full control of your 
  * projects, editing/creating new files.
  * @author Eduardo Castro <Skillerm>
- * @version 1.0.0
+ * @version 1.0.1
  */
 var ProjectController;
 
