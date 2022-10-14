@@ -2,7 +2,7 @@
   "name": "project-controller",
   "displayName": "project-controller",
   "description": "",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "publisher": "skillerm",
   "engines": {
     "vscode": "^1.72.0"
@@ -36,7 +36,7 @@
     "test2": "node ./extension.js"
   },
   "devDependencies": {
-    "@types/glob": "^8.0.0",
+    "@types/fs-extra": "^9.0.13",
     "@types/mocha": "^10.0.0",
     "@types/node": "^16.11.65",
     "@types/vscode": "^1.72.0",
@@ -48,7 +48,6 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "glob": "^8.0.3"
+    "fs-extra": "^10.1.0"
   }
 }
