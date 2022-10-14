@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import * as glob from "glob";
+import * as fs2 from "fs-extra";
 
 const FileController = {
 
@@ -10,32 +10,31 @@ const FileController = {
   },
 
   CreateNew: (newfile: string, target: string, courrentpath: string) => {
+   
     var splitFIle = newfile.split(courrentpath);
     var file = splitFIle[1];
-    if (file.split('/').length > 1) {
-      var getlastvalue = file.split('/')[file.split('/').length - 1];
-      fs.mkdir(target + file.replace(getlastvalue, ''), (error: any) => { })
-    }
-    fs.copyFile(newfile, target + '' + file, (err: any) => {
-      if (err) throw err;
+
+    fs2.copy(newfile, target + '' + file, function (err) {
+      if (err) return console.error(err);
+    });
+
+  },
+
+  CreateInitFile: (generatelogname: string) => {
+      var writeStream = fs.createWriteStream(generatelogname + '/logs.txt');
+      writeStream.end();
+  },
+
+
+  WriteInitFile: (generatelogname: string, text: string) => {
+    fs.appendFile(generatelogname+'/logs.txt', text+'\n', function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('Saved!');
     });
   },
 
-  CreateInitFile: (folder: string, generatelogname: string, dateandhours: string) => {
-    glob(folder + '/**', function (er, files) {
-      if (er) {
-        console.log(er)
-        return;
-      }
-      var writeStream = fs.createWriteStream(generatelogname + '/init-' + dateandhours + '.txt');
-
-      for (var i = 0; i < files.length; i++) {
-        if (i != 0 && files[i].indexOf('project-controller') == -1) writeStream.write(files[i] + '\n');
-      }
-
-      writeStream.end();
-    })
-  },
 
   CreateLogsFolder: (name: string) => {
     fs.mkdir(name, (error) => { })
