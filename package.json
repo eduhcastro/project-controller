@@ -1,8 +1,9 @@
 {
   "name": "project-controller",
   "displayName": "project-controller",
-  "description": "",
-  "version": "2.0.0",
+  "description": "An extension for Visual Studio Code. Have full control of your projects.",
+  "icon": "res/images/icon.jpg",
+  "version": "2.0.1",
   "publisher": "skillerm",
   "engines": {
     "vscode": "^1.72.0"
